@@ -30,9 +30,11 @@ function buttonPressed(button){
 
     //unexpected operator
     if(isOperator(equation[equation.length-1]) && numberHolder == ""){
-      displayError(); return;
+      displayError();
+      return;
     }
 
+    //else push numcer and operator to array
     if(equation.length == 0 && numberHolder == ""){
       numberHolder = sum;
     }
@@ -50,16 +52,7 @@ function solve(){ // remem to accomodate for negatives
     var symbol = equation[i];
     var num = 0;
 
-    /*if(isNaN(equation[i+1])){
-      if(!isNaN(equation[i+3])){
-        num = 0 - equation[i+3];
-        i = i+2;
-      } else {
-        displayError();
-        return;
-      }
-    } else {*/
-      num = equation[i+1];
+    num = equation[i+1];
 
     switch(symbol) {
       case '+':
@@ -83,6 +76,8 @@ function solve(){ // remem to accomodate for negatives
   updateDisplay();
   equation = [];
 }
+
+
 
 function isOperator(op){
   switch(op){
@@ -111,14 +106,6 @@ function displayError(){
   numberHolder = "";
 }
 
-function checkNeg(arr){
-  for(var i = 2; i < arr.length; i++){
-    if(arr[i]=="-"){
-
-    }
-  }
-}
-
 
 function updateDisplay(){
   var current = numberHolder;
@@ -126,9 +113,7 @@ function updateDisplay(){
   else if(isNaN(current) && current != "-"){ current = 0; }
   document.getElementById('mainScreen').innerHTML = current;
 
-  var eq = equation;
-  //if(eq != ""){ checkNeg(eq); }
-  eq = eq.join(" ");
+  var eq = equation.join(" ");
 
   document.getElementById('minorScreen').innerHTML = eq;
 
