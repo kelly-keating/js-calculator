@@ -31,13 +31,6 @@ function buttonPressed(button){
 }
 
 
-function resetCalc(){
-  equation = [];
-  numberHolder = "";
-  sum = 0;
-}
-
-
 function solve(){ // remem to accomodate for negatives
   var total = equation[0];
   for(var i = 1; i+1 < equation.length; i = i+2){
@@ -82,6 +75,13 @@ function displayError(){
   console.log("You did a boo boo");
   equation = [];
   numberHolder = "";
+}
+
+
+function resetCalc(){
+  equation = [];
+  numberHolder = "";
+  sum = 0;
 }
 
 
