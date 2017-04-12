@@ -17,13 +17,29 @@ function buttonPressed(button){
     solve();
     return;
   } else { //ie. if operator
+
+    //toggle negative
+    if(button == "-" && numberHolder == ""){
+        numberHolder = "-";
+        updateDisplay();
+        return;
+    } else if (numberHolder == "-") {
+        numberHolder = "";
+        updateDisplay();
+        return;
+    }
+
+    //unexpected operator
+    if(isOperator(equation[equation.length-1])){
+      displayError(); return;
+    }
+
     if(equation.length == 0 && numberHolder == ""){
       numberHolder = sum;
     }
     equation[equation.length] = parseFloat(numberHolder);
     equation[equation.length] = button;
     numberHolder = "";
-    //sum = 0 ??
   }
 
   updateDisplay();
@@ -70,13 +86,17 @@ function solve(){ // remem to accomodate for negatives
   equation = [];
 }
 
-
-function displayError(){
-  console.log("You did a boo boo");
-  equation = [];
-  numberHolder = "";
+function isOperator(op){
+  switch(op){
+    case '+':
+    case '-':
+    case '*':
+    case '/':
+      return true;
+    default:
+      return false;
+  }
 }
-
 
 function resetCalc(){
   equation = [];
@@ -85,13 +105,33 @@ function resetCalc(){
 }
 
 
+function displayError(){
+  console.log("You did a boo boo");
+  document.getElementById('mainScreen').innerHTML = "err";
+  document.getElementById('minorScreen').innerHTML = sum;
+  equation = [];
+  numberHolder = "";
+}
+
+function checkNeg(arr){
+  for(var i = 2; i < arr.length; i++){
+    if(arr[i]=="-"){
+
+    }
+  }
+}
+
+
 function updateDisplay(){
   var current = numberHolder;
   if(current == ""){ current = sum; }
-  else if(isNaN(current)){ current = 0; }
+  else if(isNaN(current) && current != "-"){ current = 0; }
   document.getElementById('mainScreen').innerHTML = current;
 
-  var eq = equation.join(" ");
+  var eq = equation;
+  //if(eq != ""){ checkNeg(eq); }
+  eq = eq.join(" ");
+
   document.getElementById('minorScreen').innerHTML = eq;
 
   console.log("E: " + eq);
