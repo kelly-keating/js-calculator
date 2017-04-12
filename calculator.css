@@ -4,8 +4,13 @@
    src: url('digital-7.ttf');
 }
 
+body{
+  background-color: #676389;
+  margin-top: 40px;
+}
+
 #calculator{
-  background-color: grey;
+  background-color: #cccccc;
   width: 350px;
   margin: auto;
   border-radius: 30px;
@@ -17,8 +22,8 @@
 #display{
   width: 286px;
   height: auto;
-  background-color: black;
-  color: white;
+  background-color: #638970;
+  color: #233D2C;
   margin: auto;
   text-align: right;
   font-family: digital, Arial, sans-serif;
@@ -28,12 +33,24 @@
 #mainScreen{
   font-size: 60px;
   padding: 5px;
+  max-width: 275px;
+  overflow-x: scroll;
+}
+
+#mainScreen::-webkit-scrollbar{
+	background-color: #638970;
+}
+
+#mainScreen::-webkit-scrollbar-thumb{
+	background-color: #233D2C;
 }
 
 #minorScreen{
   height: 15px;
   font-size: 15px;
   padding: 5px;
+  max-width: 275px;
+  overflow: hidden;
 }
 
 #keypad {
@@ -50,15 +67,15 @@
   display: inline-block;
   background-color: black;
   border-radius: 15px;
-  color: white;
-  margin: 1px;
+  color: #eeeeee;
+  margin: 10px 1px 10px 1px;
   width: 70px;
-  font-size: 40px;
-  line-height: 70px;
-  font-weight: bold;
+  font-size: 30px;
+  line-height: 50px;
 }
 
 #equals{
   width: 142px;
-  color: orange;
+  background-color: #F8570C;
+  color: white;
 }
