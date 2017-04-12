@@ -42,7 +42,7 @@ function solve(){ // remem to accomodate for negatives
     var symbol = equation[i];
     var num = 0;
 
-    if(equation[i+1] == ""){
+    if(isNaN(equation[i+1])){
       if(!isNaN(equation[i+3])){
         num = 0 - equation[i+3];
         i = i+2;
