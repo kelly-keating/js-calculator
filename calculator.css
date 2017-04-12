@@ -1,0 +1,41 @@
+
+#calculator{
+  border: 5px solid green;
+  width: 400px;
+}
+
+#display{
+  width: 300px;
+  height: 150px;
+}
+
+#keypad {
+  text-align: center;
+  background-color: black;
+  width: 300px;
+  height: 380px;
+  margin: auto;
+  text-align: center;
+}
+
+.button {
+  display: inline-block;
+  background-color: gray;
+  margin: 0px;
+  width: 70px;
+  height: 70px;
+  float: none;
+  font-size: 40px;
+  line-height: 70px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  border-width: thin;
+  border-color: black;
+  border-style: solid;
+  margin-bottom: 5px
+}
+
+#equals{
+  width: 146px;
+  background-color: orange;
+}
