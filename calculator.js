@@ -5,7 +5,7 @@ var numberHolder = "";
 var sum = 0;
 
 function buttonPressed(button){
-  if (!isNan(button)||button == "."){
+  if (!isNaN(button)||button == "."){
     numberHolder += button;
   } else if(button == "ac"){
     equation = [];
@@ -24,8 +24,17 @@ function buttonPressed(button){
     numberHolder = "";
     //sum = 0 ??
   }
+  updateDisplay();
 }
 
 function solve(){
+  updateDisplay();
+}
 
+function updateDisplay(){
+  var eq = equation.join();
+  //display.innerHTML = "Equation: " + eq + "</br>Number: " + numberHolder + "</br>Sum: " + sum;
+  console.log("E: " + eq);
+  console.log("N: " + numberHolder);
+  console.log("S: " + sum);
 }
