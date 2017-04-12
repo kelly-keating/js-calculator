@@ -15,7 +15,8 @@ function buttonPressed(button){
   } else if(button == "="){
     equation[equation.length] = parseFloat(numberHolder);
     solve();
-  } else {
+    return;
+  } else { //ie. if operator
     if(equation.length == 0 && numberHolder == ""){
       numberHolder = sum;
     }
@@ -24,7 +25,9 @@ function buttonPressed(button){
     numberHolder = "";
     //sum = 0 ??
   }
+
   updateDisplay();
+
 }
 
 
@@ -37,11 +40,9 @@ function resetCalc(){
 
 function solve(){ // remem to accomodate for negatives
   var total = equation[0];
-
   for(var i = 1; i+1 < equation.length; i = i+2){
     var symbol = equation[i];
     var num = 0;
-
     if(isNaN(equation[i+1])){
       if(!isNaN(equation[i+3])){
         num = 0 - equation[i+3];
@@ -53,7 +54,6 @@ function solve(){ // remem to accomodate for negatives
     } else {
       num = equation[i+1];
     }
-
     switch(symbol) {
       case '+':
         total += num;
@@ -71,11 +71,10 @@ function solve(){ // remem to accomodate for negatives
         break;
     }
   }
-
   sum = total;
+  numberHolder = "";
   updateDisplay();
   equation = [];
-  numberHolder = "";
 }
 
 
@@ -87,12 +86,14 @@ function displayError(){
 
 
 function updateDisplay(){
+  var current = numberHolder;
+  if(current == ""){ current = sum; }
+  else if(isNaN(current)){ current = 0; }
+  document.getElementById('mainScreen').innerHTML = current;
+
   var eq = equation.join(" ");
-  if(eq == ""){eq = numberHolder + eq;}
   document.getElementById('minorScreen').innerHTML = eq;
 
-  
-  //display.innerHTML = "Equation: " + eq + "</br>Number: " + numberHolder + "</br>Sum: " + sum;
   console.log("E: " + eq);
   console.log("N: " + numberHolder);
   console.log("S: " + sum);
