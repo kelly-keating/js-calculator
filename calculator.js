@@ -87,7 +87,11 @@ function displayError(){
 
 
 function updateDisplay(){
-  var eq = equation.join();
+  var eq = equation.join(" ");
+  if(eq == ""){eq = numberHolder + eq;}
+  document.getElementById('minorScreen').innerHTML = eq;
+
+  
   //display.innerHTML = "Equation: " + eq + "</br>Number: " + numberHolder + "</br>Sum: " + sum;
   console.log("E: " + eq);
   console.log("N: " + numberHolder);
