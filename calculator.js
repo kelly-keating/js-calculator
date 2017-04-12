@@ -19,18 +19,18 @@ function buttonPressed(button){
   } else { //ie. if operator
 
     //toggle negative
-    if(button == "-" && numberHolder == ""){
+    if(button == "-" && equation.length != 0 && numberHolder == "" ){
         numberHolder = "-";
         updateDisplay();
         return;
-    } else if (numberHolder == "-") {
+    } else if (button == "-" && numberHolder == "-") {
         numberHolder = "";
         updateDisplay();
         return;
     }
 
     //unexpected operator
-    if(isOperator(equation[equation.length-1])){
+    if(isOperator(equation[equation.length-1]) && numberHolder == ""){
       displayError(); return;
     }
 
